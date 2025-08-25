@@ -1,0 +1,344 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #ff4081;
+  --highlight-color: #ff80ab;
+  --secondary-color: #00aaff;
+  --container-max-width: 960px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ===================== Header ===================== */
+header {
+  background: #1e1e1e;
+  padding: 1.5rem 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin: 0;
+}
+.header-title .nickname {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.header-tagline {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--highlight-color);
+}
+
+nav {
+  margin-top: 1rem;
+}
+nav a {
+  margin: 0 0.8rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+nav a:hover {
+  color: var(--highlight-color);
+}
+
+/* ===================== Main ===================== */
+main {
+  padding: 2rem 0;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+section h2 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* ===================== フェードイン ===================== */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================== Profile Section ===================== */
+#profile p {
+  margin-bottom: 1rem;
+  
+}
+
+/* ===================== Skills Section ===================== */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* スキルカード */
+.skill-card {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* スキルカードタイトル */
+.skill-card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* サブスキルを左右に配置 */
+.subskill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.subskill:last-child {
+  margin-bottom: 0;
+}
+
+/* サブスキル名の折り返し回避・星評価 */
+.subskill-name {
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.star-rating {
+  font-size: 1rem;
+  color: var(--accent-color);
+}
+
+/* ===================== 作品一覧 (フリップカード) ===================== */
+/* 作品列表：採用 grid 佈局 */
+.works-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 翻轉卡基本設定：設定固定高度，避免疊埋 */
+.flip-card {
+  perspective: 1000px;
+  height: 400px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  background: #1e1e1e;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* 內部容器要填滿父容器 */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;  /* 填滿 .flip-card */
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  border-radius: 8px;
+}
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px; /* 3D 效果所需 */
+  border-radius: 8px;
+  height: 350px;  /* 固定高度，可根據內容調整 */
+}
+
+
+/* 表面與裏面：設定相同高度，避免內容超出 */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  /* 防止內容溢出 */
+  backface-visibility: hidden;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+}
+
+/* 表面 */
+.flip-card-front {
+  background: #1e1e1e;
+}
+
+/* 裏面：預先旋轉 180 度 */
+.flip-card-back {
+  background: #2e2e2e;
+  transform: rotateY(180deg);
+}
+
+
+/* タイトル（表：h3 / 裏：h4） */
+.flip-card-front h3,
+.flip-card-back h4 {
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: var(--secondary-color);
+}
+
+/* リンクやリストの基本スタイル */
+.work-link a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.work-link a:hover {
+  color: var(--highlight-color);
+}
+
+.work-details {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.8rem;
+}
+.work-details li {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+/* 裏面タイトル */
+.flip-card-back h4 {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* Work gallery container styling */
+.work-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Style each image in the gallery */
+.work-gallery img {
+  width: 30%;      /* Each image takes 30% of container's width */
+  border-radius: 4px;
+  object-fit: cover;
+}
+.work-gallery img:hover {
+  transform: scale(6); /* Scale image up by 10% on hover */
+}
+
+/* ===================== Contact Section ===================== */
+#contact p {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.contact-email a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+.contact-email a:hover {
+  color: var(--highlight-color);
+}
+
+/* ===================== Preloader ===================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.loader {
+  border: 4px solid #444;
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 600px) {
+  .skills-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

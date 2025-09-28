@@ -47,7 +47,7 @@ const Skills = () => {
         <div className="skill-card">
           <h3>プログラミング</h3>
           <div className="subskill">
-            <span className="subskill-name">C#, HTML, CSS, JavaScript</span>
+            <span className="subskill-name">C#, HTML, CSS, JavaScript, Java, MySQL</span>
           </div>
         </div>
       </div>

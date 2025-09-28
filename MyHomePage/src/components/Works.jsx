@@ -73,7 +73,7 @@ const Works = () => {
         '👥 制作体制： 学外サークル制作',
         '🎯 担当： プログラマーと企画'
       ],
-      description: '学外の方と一緒に制作します。今まで未経験のジャンルで、開発とても大変でした。',
+      description: '学外の方と一緒に制作します。初めて挑戦するジャンルで、とても面白いです。',
       link: 'https://www.youtube.com/watch?v=LipVikHc27w&list=PLxlxhxve1vaB-4ML3mfd8QM2Zh1jx1iCc'
     },
     {
@@ -86,7 +86,7 @@ const Works = () => {
         '⏳ 開発期間： 約4か月（開発中）',
         '🌟 目標：TGSに出展する'
       ],
-      description: '8號出口風のゲームですが、背景は精神病院です。異常を観察するだけでなく、アイテムとのインタラクションも可能です。これからTGSに出展する予定です。',
+      description: '8號出口風のゲームですが、背景は精神病院です。異常を観察するだけでなく、アイテムとのインタラクションも可能です。TGS2025に出展しました。',
       images: ['Image/8exit.jpg', 'Image/8exit2.jpg'],
       link: 'https://drive.google.com/file/d/1Fkp6_x2pQABfGt6vppmHZ27Ns0ovk-xN/view?usp=sharing'
     }
